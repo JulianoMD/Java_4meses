@@ -46,6 +46,19 @@ public class ListaLigada<TIPO> {
         setTamanho(getTamanho() + 1);
     }
 
+    public void adicionarComeco(TIPO novoValor){
+        Node<TIPO> novoNode = new Node<TIPO>(novoValor);
+        if(getPrimeiro() == null &&  getUltimo() == null){
+            setPrimeiro(novoNode);
+            setUltimo(novoNode);
+            setTamanho(getTamanho() + 1);
+            return;
+        }
+        novoNode.setProximo(getPrimeiro());
+        setPrimeiro(novoNode);
+        setTamanho(getTamanho() + 1);
+    }
+
     public void remover(TIPO valorProcurado){
 
         Node<TIPO> atual = getPrimeiro();
