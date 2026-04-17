@@ -37,7 +37,7 @@ public class Arvore <TIPO extends Comparable<TIPO>> {
         return raiz;
     }
 
-    public void emOrdem(NoArvore<TIPO> atual) {
+    public void emOrdem(NoArvore<TIPO> atual) { // percorre a árvore em ordem (esquerda, raiz, direita)
         if (atual != null) {
             emOrdem(atual.getEsquerda()); // chama a função recursivamente para o nó da esquerda
             System.out.println(atual.getValor()); // imprime o valor do nó atual
@@ -45,7 +45,7 @@ public class Arvore <TIPO extends Comparable<TIPO>> {
         }
     }
 
-    public void preOrdem(NoArvore<TIPO> atual) {
+    public void preOrdem(NoArvore<TIPO> atual) { // percorre a árvore em pré-ordem (raiz, esquerda, direita)
         if (atual != null) {
             System.out.println(atual.getValor()); // imprime o valor do nó atual
             preOrdem(atual.getEsquerda()); // chama a função recursivamente para o nó da esquerda
@@ -53,7 +53,7 @@ public class Arvore <TIPO extends Comparable<TIPO>> {
         }
     }
 
-    public void posOrdem(NoArvore<TIPO> atual) {
+    public void posOrdem(NoArvore<TIPO> atual) { // percorre a árvore em pós-ordem (esquerda, direita, raiz)
         if (atual != null) {
             posOrdem(atual.getEsquerda()); // chama a função recursivamente para o nó da esquerda
             posOrdem(atual.getDireita()); // chama a função recursivamente para o nó da direita
