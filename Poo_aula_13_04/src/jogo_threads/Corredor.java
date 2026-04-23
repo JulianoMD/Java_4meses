@@ -2,8 +2,6 @@ package jogo_threads;
 
 public class Corredor implements Runnable {
     private String nome;
-    private int distancia = 0;
-    private static final int META = 50;
 
     public Corredor(String nome) {
         this.nome = nome;
