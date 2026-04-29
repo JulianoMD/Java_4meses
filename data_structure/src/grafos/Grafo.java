@@ -1,6 +1,8 @@
 package grafos;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Grafo <TIPO>{
     private ArrayList<Vertice<TIPO>> vertices;
@@ -35,23 +37,30 @@ public class Grafo <TIPO>{
     }
 
     public void buscaEmLargura() {
-        ArrayList<Vertice<TIPO>> marcados = new ArrayList<Vertice<TIPO>>(); // esse daqui eu ja antes?
-        ArrayList<Vertice<TIPO>> fila = new ArrayList<Vertice<TIPO>>(); // quem é o proximo
-        Vertice<TIPO> atual = this.vertices.get(0);
-        marcados.add(atual);
-        System.out.println(atual.getDado());
-        fila.add(atual);
-        while (fila.size() > 0) {
-            Vertice<TIPO> visitado = fila.get(0); // pega o primeiro vértice da fila
-            for (int i = 0; i < visitado.getArestasSaida().size(); i++) {
-                Vertice<TIPO> proximo = visitado.getArestasSaida().get(i).getFim(); // pega o vértice do fim da aresta
-                if (!marcados.contains(proximo)) { // verifica se o próximo vértice já foi visitado
-                    marcados.add(proximo);
-                    System.out.println(proximo.getDado());
-                    fila.add(proximo);
+    ArrayList<Vertice<TIPO>> marcados = new ArrayList<>();
+
+    for (Vertice<TIPO> verticeInicial : this.vertices) {
+        if (!marcados.contains(verticeInicial)) {
+            Queue<Vertice<TIPO>> fila = new LinkedList<>();
+
+            marcados.add(verticeInicial);
+            System.out.println(verticeInicial.getDado());
+            fila.add(verticeInicial);
+
+            while (!fila.isEmpty()) {
+                Vertice<TIPO> visitado = fila.poll(); // poll() pega o primeiro e já remove da fila
+
+                for (Aresta<TIPO> aresta : visitado.getArestasSaida()) {
+                    Vertice<TIPO> proximo = aresta.getFim();
+
+                    if (!marcados.contains(proximo)) {
+                        marcados.add(proximo);
+                        System.out.println(proximo.getDado());
+                        fila.add(proximo);
+                    }
                 }
             }
-            fila.remove(0);
         }
     }
+}
 }

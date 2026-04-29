@@ -1,4 +1,4 @@
-package aula14;
+package aula14_15;
 
 public class Gafanhoto extends Pessoa {
     private String login;
@@ -32,6 +32,13 @@ public class Gafanhoto extends Pessoa {
 
     @Override
     public String toString() {
-        return "Gafanhoto{" + super.toString() + login + ", idade=" + idade + ", sexo=" + sexo + ", experiencia=" + experiencia + '}';
+        return "Gafanhoto{" +
+                "login='" + login + '\'' +
+                ", totalAssistido=" + totalAssistido +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", sexo='" + sexo + '\'' +
+                ", experiencia=" + experiencia +
+                '}';
     }
 }
